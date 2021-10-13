@@ -1,0 +1,15 @@
+<!-- home.html -->
+{% extends '' %}
+    {% block content %}
+        <div class="logo1">
+        <u style="color:skyblue"><h1 style="color:yellow" align="center">INFORMATION ABOUT PACKAGES</h1></u>
+            <br>
+            <table border="1" style="color: yellow; background-color: green; opacity: 70%;" align="center">
+                <tr><th>Package Name</th><th>Amount</th></tr>
+                {% for pack in packs %}
+                    <tr><td>{{ pack.pname }}</td><td>{{ pack.amount }}</td></tr>
+                {% endfor %}
+            </table>
+        </div>
+        <a href="{% url 'book-ticket' %}"><u style="color:seashell"><h1 style="color:Yellow" align="center">Book tour</h1></u></a>
+    {% endblock %}

@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+<style>
+  footer {
+  text-align: center;
+  padding: 3px;
+  background-color: rgb(34, 33, 33);
+  color: white;
+}
+</style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'buses/main.css' %}">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lobster+Two:ital,wght@1,700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montaga&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lobster+Two:ital,wght@1,700&family=Volkhov&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+
+	<link rel="stylesheet" href="{% static '/loginmodule/css/style.css' %}">
+  <script src="{% static 'buses/js/text.js' %}"></script>
+<script>
+  function download(){
+    const form=document.getElementById('table');
+    html2pdf()
+    .from(form)
+    .save();
+}
+
+function downloadTicket(){
+    const ticket=document.getElementById('ticket');
+    html2pdf()
+    .from(ticket)
+    .save();
+}
+</script>
+</head>
+
+<body>
+  <header>
+       <header style="margin: bottom 20px;">
+        <div class="navigation">
+            <li><h3 style="color: yellow; ">Travel Management Website</h3></li>
+            <ul class="menu">
+                <li ><a href="{% url 'home' %}" style="color: yellow;">Booking Dashboard</a></li>
+                {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}" style="color: yellow;">Logout</a></li>
+                    {% if request.session.temp != "abc" %}
+                        <li><a href="{% url 'bookhistory' %}" style="color: yellow;">Flight Booking History</a> </li>
+                        <li><a href="{% url 'traveller-bookings' %}" style="color: yellow;">Bus Booking History</a> </li>
+                    {% else %}
+                        <li><a href="{% url 'book-ticket' %}" style="color: yellow;">Book Tour</a></li>
+                        {% endif %}
+                {% else %}
+                    <li><a href="{% url 'about' %}" style="color: yellow;">About Us</a></li>
+                    <li><a href="{% url 'signup' %}" style="color: yellow;">SignUp</a></li>
+                    <li><a href="{% url 'login' %}" style="color: yellow;">Login</a></li>
+                {% endif %}
+            </ul>
+                {% if request.user.is_authenticated %}
+                     <br><h1 style="color:red " align="right" style="color: yellow;">Welcome  {{ request.user.username }}</h1>
+                {% endif %}
+        </div>
+    </header>
+
+  {% block content%}
+
+  {% endblock %}
+  </div>
+  <footer class="fixed-bottom text-center">
+    <p>Author: <a href="https://titusowuorportfolio.herokuapp.com">Titus@TDBSoft</a> Email:
+    <a href="mailto:infotdbsoft@example.com">infotdbsoft@gmail.com</a></p>
+  </footer> 
+  <!-- jQuery first, then Tether, then Bootstrap JS. -->
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+    integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+    integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+    integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

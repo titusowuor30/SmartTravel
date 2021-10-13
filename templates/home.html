@@ -1,0 +1,119 @@
+<!-- home.html -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        footer {
+        text-align: center;
+        padding: 3px;
+        background-color: rgb(39, 38, 38);
+        color: white;
+      }
+      </style>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static '/loginmodule/css/font-awesome.css' %}">
+	<link rel="stylesheet" href="{% static '/loginmodule/css/style.css' %}">
+    <link rel="stylesheet" href="{% static '/loginmodule/css/grid.css' %}">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header style="margin: bottom 20px;">
+        <div class="navigation">
+            <li><h3 style="color: yellow; ">Travel Management Website</h3></li>
+            <ul class="menu">
+                {% if request.user.is_authenticated %}
+                <li ><a href="{% url 'index' %}" style="color: yellow;">Home</a></li>
+                <li ><a href="{% url 'home' %}" style="color: yellow;">Booking Dashboard</a></li>
+                    <li><a href="{% url 'logout' %}" style="color: yellow;">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'about' %}" style="color: yellow;">About Us</a></li>
+                    <li><a href="{% url 'signup' %}" style="color: yellow;">SignUp</a></li>
+                    <li><a href="{% url 'login' %}" style="color: yellow;">Login</a></li>
+                {% endif %}
+            </ul>
+                {% if request.user.is_authenticated %}
+                     <br><h1 style="color:red " align="right" style="color: yellow;">Welcome  {{ request.user.username }}</h1>
+                {% endif %}
+        </div>
+    </header>
+    <br><br>
+    {% block content %}
+        <div class="logo1">
+        <u style="color:skyblue"><h1 style="color:yellow" align="center">Info About Flight Packages</h1></u>
+            <br>
+            <table border="1" style="color: yellow; background-color: green; opacity: 70%;" align="center">
+                <tr><th>Package Name</th><th>Amount</th></tr>
+                {% for pack in packs %}
+                    <tr><td>{{ pack.pname }}</td><td>{{ pack.amount }}</td></tr>
+                {% endfor %}
+            </table>
+        </div>
+        <a href="{% url 'buses-home' %}"><u style="color:seashell"><h1 style="color:Yellow" align="center">Book Bus</h1></u></a>
+        <a href="{% url 'book-ticket' %}"><u style="color:seashell"><h1 style="color:Yellow" align="center">Book Flight</h1></u></a>
+    {% endblock %}
+    <footer class="fixed-bottom text-center">
+        <p>Made with ❤ by <a href="https://titusowuorportfolio.herokuapp.com">TDBSoft</a> Email:
+        <a href="mailto:infotdbsoft@example.com">infotdbsoft@gmail.com</a></p>
+      </footer>
+
+<script src="{%static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+<script src="{%static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{%static 'js/popper.min.js' %}"></script>
+<script src="{%static 'js/bootstrap.min.js' %}"></script>
+<script src="{%static 'js/owl.carousel.min.js' %}"></script>
+<script src="{%static 'js/isotope.pkgd.min.js' %}"></script>
+<script src="{%static 'js/ajax-form.js' %}"></script>
+<script src="{%static 'js/waypoints.min.js' %}"></script>
+<script src="{%static 'js/jquery.counterup.min.js' %}"></script>
+<script src="{%static 'js/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{%static 'js/scrollIt.js' %}"></script>
+<script src="{%static 'js/jquery.scrollUp.min.js' %}"></script>
+<script src="{%static 'js/wow.min.js' %}"></script>
+<script src="{%static 'js/nice-select.min.js' %}"></script>
+<script src="{%static 'js/jquery.slicknav.min.js' %}"></script>
+<script src="{%static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{%static 'js/plugins.js' %}"></script>
+<script src="{%static 'js/gijgo.min.js' %}"></script>
+<script src="{%static 'js/slick.min.js' %}"></script>
+
+
+<!--contact js-->
+<script src="{%static 'js/contact.js' %}"></script>
+<script src="{%static 'js/jquery.ajaxchimp.min.js' %}"></script>
+<script src="{%static 'js/jquery.form.js' %}"></script>
+<script src="{%static 'js/jquery.validate.min.js' %}"></script>
+<script src="{%static 'js/mail-script.js' %}"></script>
+
+
+<script src="{%static 'js/main.js' %}"></script>
+<script>
+        $('#datepicker').datepicker({
+            iconsLibrary: 'fontawesome',
+            icons: {
+             rightIcon: '<span class="fa fa-caret-down"></span>'
+         }
+        });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!-- login.html -->
+{% extends 'home.html' %}
+{% block content %}
+<div class="agile-login">
+    <div class="wrapper">
+        <h1 style="color:white;fot-size:36px;">
+            Tour Reservation!!!
+        </h1>
+        <h1 style="color:chocolate">Tour Booked Successfully!<br>
+            <p>{{message}}</p>
+            <h1 style="color:blueviolet">Thanks for using Travello.<br>Visit again!</h1>
+            <div class="row">
+                <div class="col">
+                    <a class="btn btn-primary float-right d-inline" href="{% url 'book-ticket' %}">Book a Flight
+                        Ticket</a>
+                </div>
+                <div class="col">
+                    <a class="btn btn-secondary float-left" href="{% url 'buses-home' %}">Book a Bus Ticket</a>
+                </div>
+            </div>
+    </div>
+    <br>
+</div>
+{% endblock %}
