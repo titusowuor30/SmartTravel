@@ -66,7 +66,7 @@ def lipa_na_mpesa_online(request):
             "PartyB": LipanaMpesaPpassword.Business_short_code,
             "PhoneNumber": phone,  # replace with your phone number to get stk push
             "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
-            "AccountReference": "TDBSoft",
+            "AccountReference": "Travello",
             "TransactionDesc": "TDBSoft Travello Ltd"
         }
         response = requests.post(api_url, json=api_request, headers=headers)

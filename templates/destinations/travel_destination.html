@@ -59,10 +59,10 @@
                             <div class="single_place">
                                 <div class="thumb">
                                     <img src="{{dest.img1.url}}" alt="">
-                                    <a href="{% url 'destination_details' dest.dest_name %}" class="btn btn-secondary" style="float:center;">₹{{dest.price}}</a>
+                                    <a href="{% url 'destination_details' dest.dest_name %}" class="btn btn-secondary" style="float:center;">Kshs.{{dest.price}}</a>
                                 </div>
                                 <div class="place_info">
-                                    <a href=""><h3>{{dest.dest_name}}</h3></a>
+                                    <a href="{% url 'destination_details' dest.dest_name %}"><h3>{{dest.dest_name}}</h3></a>
                                     <p>{{dest.region}}</p>
                                     <div class="rating_days d-flex justify-content-between">
                                         <span class="d-flex justify-content-center align-items-center">

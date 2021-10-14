@@ -20,6 +20,8 @@ def book_tour(request):
     tour_reservation=Tour_reservation()
     tour_reservation.user=request.user.TMuser
     tour_reservation.tour_ticket=get_random_string(length=6)
+    source=Source.objects.get(name=request.POST.get('source'))
+    tour_reservation.source = source
     tour_reservation.tour_site=request.POST.get('tour_site')
     print(request.POST)
     tour_reservation.full_name=request.POST.get('full_name')
@@ -39,11 +41,12 @@ def destination_list(request,region_name):
 
 def destination_details(request,dest_name):
     dest = Destination.objects.get(dest_name=dest_name)
+    source=Source.objects.all()
     price = dest.price
     request.session['price'] = price
     request.session['city'] = dest_name
     request.session['tour_site']=dest_name
-    return render(request,'destinations/destination_details.html',{'dest':dest})
+    return render(request,'destinations/destination_details.html',{'dest':dest,'source':source})
 
 def search(request):
     try:

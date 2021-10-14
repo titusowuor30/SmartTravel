@@ -30,7 +30,7 @@ def adduserinfo(request):
 			u.TMSUser = TMSUser(user=u,mobileno=mno)
 			u.TMSUser.save()
 			u.save()
-			return HttpResponseRedirect('auth/login')
+			return redirect('index')
 		else:
 			return render(request,'auth/signup.html',{"error1":"password length is lessthan 8"})
 	else:

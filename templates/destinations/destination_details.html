@@ -7,65 +7,72 @@
 </div>
 <div class="destination_details_info">
     <img class="container" src="{{dest.img1.url}}">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-9">
-                <div class="destination_info" style="color:white;">
-                    <h1><strong>Description</strong></h1>
-                    <p style="color:black;"><strong>{{dest.desc}}</strong>
-                    <div class="single_destination">
-                        <h4>Day-01</h4>
-                        <P style="color:white;">{{dest.day1}}</P>
-                    </div>
-                    <div class="single_destination">
-                        <h4>Day-02</h4>
-                        <P style="color:white;">{{dest.day2}}</P>
-                    </div>
-                    {% if dest.day4 != 'NULL'%}
-                    <div class="single_destination">
-                        <h4>Day-03</h4>
-                        <P style="color:white;">{{dest.day3}}</P>
-                    </div>
-                    {%endif%}
-                    {% if dest.day4 != 'NULL'%}
-                    <div class="single_destination">
-                        <h4>Day-04</h4>
-                        <P style="color:white;">{{dest.day4}}</P>
-                    </div>
-                    {%endif%}
-                    {% if dest.day5 != 'NULL'%}
-                    <div class="single_destination">
-                        <h4>Day-05</h4>
-                        <P style="color:white;">{{dest.day5}}</P>
-                    </div>
-                    {%endif%}
-                    {% if dest.day6 != 'NULL'%}
-                    <div class="single_destination">
-                        <h4>Day-06</h4>
-                        <P style="color:white;">{{dest.day6}}</P>
-                    </div>
-                    {%endif%}
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-9">
+            <div class="destination_info" style="color:white;">
+                <h1><strong>Description</strong></h1>
+                <p style="color:black;"><strong>{{dest.desc}}</strong>
+                <div class="single_destination">
+                    <h4>Day-01</h4>
+                    <P style="color:white;">{{dest.day1}}</P>
                 </div>
-                <div class="bordered_1px"></div>
-                <div class="contact_join">
-                    <h3>Book Now!!</h3>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="submit_btn">
-                                <form action="{% url 'book_tour' %}" method="post">
-                                    {% csrf_token %}
-                                    <input type="text" name="tour_site" value="{{dest.dest_name}}" hidden>
-                                    <input type="text" name="full_name" class="form-field" placeholder="full name"><br>
-                                    <input type="text" name="id_no" class="form-field" placeholder="ID Number"><br>
-                                    <input type="text" name="phone_no" class="form-field" placeholder="Phone Number"><br>
-                                    <button class="boxed-btn4 form-field" type="submit" >Book</button>
-                                </form>
-                            </div>
+                <div class="single_destination">
+                    <h4>Day-02</h4>
+                    <P style="color:white;">{{dest.day2}}</P>
+                </div>
+                {% if dest.day4 != 'NULL'%}
+                <div class="single_destination">
+                    <h4>Day-03</h4>
+                    <P style="color:white;">{{dest.day3}}</P>
+                </div>
+                {%endif%}
+                {% if dest.day4 != 'NULL'%}
+                <div class="single_destination">
+                    <h4>Day-04</h4>
+                    <P style="color:white;">{{dest.day4}}</P>
+                </div>
+                {%endif%}
+                {% if dest.day5 != 'NULL'%}
+                <div class="single_destination">
+                    <h4>Day-05</h4>
+                    <P style="color:white;">{{dest.day5}}</P>
+                </div>
+                {%endif%}
+                {% if dest.day6 != 'NULL'%}
+                <div class="single_destination">
+                    <h4>Day-06</h4>
+                    <P style="color:white;">{{dest.day6}}</P>
+                </div>
+                {%endif%}
+            </div>
+            <div class="bordered_1px"></div>
+            <div class="contact_join">
+                <h3>Book Now!!</h3>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="submit_btn">
+                            <form action="{% url 'book_tour' %}" method="post">
+                                {% csrf_token %}
+                                <input type="text" name="tour_site" value="{{dest.dest_name}}" hidden>
+                                    <label style="color:white;">Select source</label>
+                                    <select name="source" id="city_autocomplete" class="form-field" required>
+                                        {% for s in source %}
+                                        <option>{{s.name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <!-- <input type="text" name="source" required id="city_autocomplete" class=" ml-3 mr-3" placeholder="Enter Source" /> -->
+                                <input type="text" name="full_name" class="form-field" placeholder="full name"><br>
+                                <input type="text" name="id_no" class="form-field" placeholder="ID Number"><br>
+                                <input type="text" name="phone_no" class="form-field" placeholder="Phone Number"><br>
+                                <button class="boxed-btn4 form-field" type="submit">Book</button>
+                            </form>
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
+    </div>
     </img>
 </div>
 <!-- newletter_area_start  -->
@@ -102,4 +109,4 @@
         </div>
     </div>
 </div>
- {% endblock %}
+{% endblock %}

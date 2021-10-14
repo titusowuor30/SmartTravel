@@ -137,10 +137,10 @@
                     <div class="single_place">
                         <div class="thumb">
                             <img src="{{dest.img1.url}}" alt="">
-                            <a href='' class="prise">₹{{dest.price}}</a>
+                            <a href='' class="prise">Kshs.{{dest.price}}</a>
                         </div>
                         <div class="place_info">
-                            <a href=''>
+                            <a href="{% url 'destination_list' dest.region.region_name %}">
                                 <h3>{{dest.region.region_name}}</h3>
                             </a>
                             <p>{{dest.region_name}}</p>
@@ -151,11 +151,11 @@
                                      <i class="fa fa-star"></i> 
                                      <i class="fa fa-star"></i> 
                                      <i class="fa fa-star"></i>
-                                     <a href="#">(20 Review)</a>
+                                     <a href="{% url 'destination_list' dest.region.region_name %}">(20 Review)</a>
                                 </span>
                                 <div class="days">
                                     <i class="fa fa-clock-o"></i>
-                                    <a href=''>{{dest.days}} Days</a>
+                                    <a href="{% url 'destination_list' dest.region.region_name %}">{{dest.days}} Days</a>
                                 </div>
                             </div>
                         </div>

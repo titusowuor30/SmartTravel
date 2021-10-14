@@ -45,6 +45,9 @@
                 <li ><a href="{% url 'index' %}" style="color: yellow;">Home</a></li>
                 <li ><a href="{% url 'home' %}" style="color: yellow;">Booking Dashboard</a></li>
                     <li><a href="{% url 'logout' %}" style="color: yellow;">Logout</a></li>
+                {% if request.user.is_superuser %}
+                <li><a href="/admin/" style="color: yellow;">Admin</a></li>
+                {% endif %}
                 {% else %}
                     <li><a href="{% url 'about' %}" style="color: yellow;">About Us</a></li>
                     <li><a href="{% url 'signup' %}" style="color: yellow;">SignUp</a></li>
